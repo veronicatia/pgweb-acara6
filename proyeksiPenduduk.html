@@ -32,11 +32,11 @@
                             <i class="fa-solid fa-table"></i> Data
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="perkebunankelapa.html">Perbandingan Produksi Kelapa</a></li>
-                            <li><a class="dropdown-item" href="jumlah_desa.html">Jumlah Desa</a></li>
-                            <li><a class="dropdown-item" href="index.html">Jumlah Penduduk</a></li>
                             <li><a class="dropdown-item" href="jml_pdd_mnurut_jenis_kelamin.html">Jumlah Penduduk Menurut Jenis Kelamin</a></li>
-                            <li><a class="dropdown-item" href="rasio_jenis_kelamin.html">Rasio Jenis Kelamin</a></li>
+                            <li><a class="dropdown-item" href="proyeksiPenduduk.html">Proyeksi Penduduk</a></li>
+                            <li><a class="dropdown-item" href="produktivitasPangan.html">Produktivitas Tanaman Pangan Dalam Ton/Hektar</a></li>
+                            <li><a class="dropdown-item" href="suhuUdara.html">Suhu Udara Rata-Rata</a></li>
+                            <li><a class="dropdown-item" href="curahHujan.html">Curah Hujan</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -55,7 +55,7 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
-                <h5>Jumlah Desa</h5>
+                <h5>Proyeksi Penduduk Kabupaten Karangasem Menurut Golongan Umur dan Jenis Kelamin (Ribu Jiwa)</h5>
             </div>
             <div class="card body">
                 <div id="chart"></div>
@@ -94,67 +94,53 @@
 
         <script>
             var options = {
-                series: [{
-                    name: 'Jumlah Desa',
-                    data: ['6', '10', '12', '11', '14', '8', '8', '9']
-                }],
+                series: [
+                    {
+                        name: "",
+                        data: [31.40,33.30,37.60,33.10,25.90,28.00,27.80,26.70,25.60,30.80,30.40,25.00,21.20,15.60,12.40,13.70],
+                    },
+                ],
                 chart: {
                     type: 'bar',
-                    height: 350
+                    height: 350,
                 },
                 plotOptions: {
                     bar: {
-                        horizontal: false,
-                        columnWidth: '55%',
-                        endingShape: 'rounded',
-                        dataLabels: {
-                            position: 'top',
-                        },
+                        borderRadius: 0,
+                        horizontal: true,
+                        distributed: true,
+                        barHeight: '80%',
+                        isFunnel: true,
                     },
                 },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    show: true,
-                    width: 2,
-                    colors: ['transparent']
-                },
-                xaxis: {
-                    categories: ['Rendang', 'Sidemen', 'Manggis', 'Karangasem', 'Abang', 'Bebandem', 'Selat', 'Kubu'],
-                    title: {
-                        text: 'Kecamatan'
-                    }
-                },
-                yaxis: {
-                    title: {
-                        text: ''
-                    }
-                },
-                fill: {
-                    opacity: 1
-                },
-                tooltip: {
-                    y: {
-                        formatter: function (val) {
-                            return + val + "%"
-                        }
-                    }
-                },
+                colors: [
+                    '#F44F5E',
+                ],
                 dataLabels: {
                     enabled: true,
-                    formatter: function (val) {
-                        return val;
+                    formatter: function (val, opt) {
+                        return opt.w.globals.labels[opt.dataPointIndex]
                     },
-                    offsetY: -20,
-                    style: {
-                        fontSize: '12px',
-                        colors: ["#304758"]
-                    }
+                    dropShadow: {
+                        enabled: true,
+                    },
+                },
+                title: {
+                    text: 'Pyramid Chart',
+                    align: 'middle',
+                },
+                xaxis: {
+                    categories: ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60-64', '65-69', '70-74', '75+'],
+                },
+                legend: {
+                    show: false,
                 },
             };
+
             var chart = new ApexCharts(document.querySelector("#chart"), options);
             chart.render();
+
         </script>
 </body>
+
 </html>

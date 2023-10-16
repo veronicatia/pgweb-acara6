@@ -32,11 +32,11 @@
                             <i class="fa-solid fa-table"></i> Data
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="perkebunankelapa.html">Perbandingan Produksi Kelapa</a></li>
-                            <li><a class="dropdown-item" href="jumlah_desa.html">Jumlah Desa</a></li>
-                            <li><a class="dropdown-item" href="index.html">Jumlah Penduduk</a></li>
                             <li><a class="dropdown-item" href="jml_pdd_mnurut_jenis_kelamin.html">Jumlah Penduduk Menurut Jenis Kelamin</a></li>
-                            <li><a class="dropdown-item" href="rasio_jenis_kelamin.html">Rasio Jenis Kelamin</a></li>
+                            <li><a class="dropdown-item" href="proyeksiPenduduk.html">Proyeksi Penduduk</a></li>
+                            <li><a class="dropdown-item" href="produktivitasPangan.html">Produktivitas Tanaman Pangan Dalam Ton/Hektar</a></li>
+                            <li><a class="dropdown-item" href="suhuUdara.html">Suhu Udara Rata-Rata</a></li>
+                            <li><a class="dropdown-item" href="curahHujan.html">Curah Hujan</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -51,16 +51,6 @@
             </div>
         </div>
     </nav>
-
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h5>Perbandingan Produksi Kelapa</h5>
-            </div>
-            <div class="card body">
-                <div id="chart"></div>
-            </div>
-        </div>
 
         <!-- Modal -->
         <div class="modal fade" id="InfoModal" tabindex="-1" aria-labelledby="InfoModalLabel" aria-hidden="true">
@@ -84,6 +74,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="container mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Produktivitas Tanaman Pangan Dalam Ton/Hektar</h5>
+                </div>
+                <div class="card body">
+                    <div id="chart"></div>
+                </div>
+            </div>
+            
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
@@ -94,27 +95,30 @@
 
         <script>
             var options = {
-          series: [958.88, 1160.40, 1711.64, 2789.44, 3577.84, 1436.75, 866.67, 679.35],
-          chart: {
-          type: 'donut',
-          width: 500
-        },
-        labels: ['Rendang', 'Sidemen', 'Manggis', 'Karangasem', 'Abang', 'Bebandem', 'Selat', 'Kubu'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
+                series: [6.41,1.66,9.84,10.75,0.94,0.94,11.66],
+                chart: {
+                    type: 'donut',
+                    width: 500
+                },
+                labels: ['Padi', 'Jagung', 'Ubi Kayu', 'Ubi Jalar', 'Kacang Tanah', 'Kacang Kedele', 'Kacang Hijau'
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+                ],
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart"), options);
+            chart.render();
         </script>
 </body>
+
 </html>
